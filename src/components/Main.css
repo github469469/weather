@@ -26,13 +26,7 @@ header{
     align-items: center;
     background-color: aqua;
 }
-/* button{
-    color: white;
-    background-color: teal;
-    width: 150px;
-    height: 40px;
-    border-radius: 10px;
-} */
+
 .result{
     display: flex;
     flex-direction: column;
