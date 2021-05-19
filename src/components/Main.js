@@ -20,15 +20,20 @@ const data={
 }
 
 const get_weather=async ()=>{
-    
- const result = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${data.city}&appid=${data.key}`)
+try{
+    const result = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${data.city}&appid=${data.key}`)
     const res = await result.json()
     setWeather(res.main.temp)
     
     setCity(res.name)
     setDescription(res.weather[0].description)
     setIcon(res.weather[0].icon)
-    return res
+}
+ catch{
+     alert('Not Found')
+ }   
+ 
+    
 }
 // const getdetails=(event)=>{
 //     event.preventDefault();
