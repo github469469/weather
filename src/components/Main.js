@@ -1,6 +1,7 @@
 
 import React from 'react'
 import './Main.css'
+import { useState } from 'react'
 // import axios from 'axios'
 const Main = () => {
    
@@ -29,17 +30,16 @@ const Main = () => {
 
    
 
-// }
- var weather
-var city=''
-var description=''
+const [weather, setWeather] = useState('')
+const [city ,setCity]=useState('')
+const [description ,setDescription]=useState('')
 const getdetails=async ()=>{
  const result = await fetch("http://api.openweathermap.org/data/2.5/weather?q=london&appid=ba7e76b12cc767b261a2470526bcb5f7")
     const res = await result.json()
-    weather=res.main.temp
+    setWeather(res.main.temp)
     //console.log(weather);
-    city=res.name
-    description=res.weather[0].description
+    setCity(res.name)
+    setDescription(res.weather[0].description)
     return res
 }
     return (
@@ -59,7 +59,7 @@ const getdetails=async ()=>{
             <button onClick={getdetails}>Submit</button>
         </div>
        <div className="result">
-           {console.log(city)}
+           {console.log(weather)}
           <h2>{city}</h2> 
            <h3>{weather}</h3>
            <p>{description}</p>
